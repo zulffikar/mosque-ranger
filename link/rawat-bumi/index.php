@@ -7,6 +7,7 @@
 $title     = 'Rawat Bumi';
 $targetUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfUsN-eaYMl4nwYW4cejPYPVf5n1m_FCO6OB-wwd56WYBpInQ/viewform?usp=dialog';
 $qrFile    = 'qr-rawat-bumi.png';
+$qrUrl     = '/link/rawat-bumi/' . $qrFile; // path absolut agar tetap tampil tanpa garis miring di akhir URL
 $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 ?>
 <!DOCTYPE html>
@@ -19,44 +20,53 @@ $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 <link rel="icon" href="/assets/img/logo/bb938a4f178b51b3.png">
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f1f25;background:linear-gradient(145deg,#f81f01 0%,#ee076e 100%)}
-.card{width:100%;max-width:480px;background:#fff;border-radius:16px;padding:32px 28px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.2)}
-.logo{height:44px;width:auto;margin-bottom:14px;padding:8px 16px;background:#1f1f25;border-radius:999px;box-sizing:content-box}
-.eyebrow{margin:0;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#f9004d;font-weight:600}
-h1{margin:6px 0 10px;font-size:32px;font-weight:800}
-.lead{margin:0 0 20px;color:rgba(29,29,36,.75);line-height:1.6;font-size:15px}
-.qr{display:block;width:100%;max-width:280px;height:auto;margin:0 auto 20px;border:1px solid #eee;border-radius:12px}
-.label{margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#717173}
-.urlrow{display:flex;gap:8px;margin-bottom:20px}
-.urlrow input{flex:1;min-width:0;padding:10px 12px;border:1px solid #d5d7e0;border-radius:8px;font-size:13px;color:#444;background:#f7f8fb}
-.btn{display:inline-block;padding:10px 18px;border:2px solid #f9004d;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;background:#fff;color:#f9004d;font-family:inherit;transition:.2s}
-.btn:hover{background:#f9004d;color:#fff}
-.btn.solid{background:#f9004d;color:#fff}
-.btn.solid:hover{background:#d4003f;border-color:#d4003f}
-.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.actions .btn{flex:1 1 150px}
-.foot{margin:22px 0 0;font-size:12px;color:#717173}
-.foot a{color:inherit}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#111827;background:linear-gradient(180deg,#fff 0%,#f3f4f8 100%)}
+.logo{height:40px;width:auto;margin-bottom:20px;padding:8px 16px;background:#1f1f25;border-radius:999px;box-sizing:content-box}
+.card{width:100%;max-width:446px;background:#fff;border-radius:24px;padding:32px;text-align:center;box-shadow:0 10px 40px rgba(17,24,39,.08)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:#fff0f3;color:#d4003f;font-size:13px;font-weight:600}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#f9004d}
+h1{margin:14px 0 8px;font-size:26px;font-weight:800;color:#111827}
+.lead{margin:0 0 24px;color:#6b7280;line-height:1.55;font-size:15px}
+.qrbox{display:block;width:100%;max-width:324px;margin:0 auto 24px;padding:16px;border:2px dashed #e5e7eb;border-radius:20px}
+.qrbox img{display:block;width:100%;height:auto}
+.urlbox{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px;background:#fafafa;text-align:left}
+.urlbox div{flex:1;min-width:0}
+.label{margin:0 0 2px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#9ca3af}
+.urlbox input{width:100%;padding:0;border:0;background:transparent;font:13px ui-monospace,Menlo,Consolas,monospace;color:#374151;text-overflow:ellipsis;outline:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid transparent;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit;transition:.2s}
+.btn.copy{padding:8px 14px;font-size:14px;background:#fff;border-color:#e5e7eb;color:#374151}
+.btn.copy:hover{background:#f3f4f6}
+.btn.red{background:#f9004d;color:#fff;box-shadow:0 4px 12px rgba(249,0,77,.3)}
+.btn.red:hover{background:#d4003f}
+.btn.dark{background:#111827;color:#fff}
+.btn.dark:hover{background:#000}
+.actions{display:flex;gap:12px}
+.actions .btn{flex:1}
+.foot{margin:20px 0 0;padding-top:16px;border-top:1px solid #f0f0f3;font-size:12px;color:#9ca3af}
+.foot a{color:#6b7280}
+@media(max-width:420px){.card{padding:24px 18px}.actions{flex-direction:column}}
 </style>
 </head>
 <body>
+<img class="logo" src="/assets/img/logo/bb938a4f178b51b3.png" alt="Mosque Ranger">
 <main class="card">
- <img class="logo" src="/assets/img/logo/bb938a4f178b51b3.png" alt="Mosque Ranger">
- <p class="eyebrow">Mosque Ranger</p>
- <h1><?= $e($title) ?></h1>
+ <span class="badge"><?= $e($title) ?></span>
+ <h1>Formulir <?= $e($title) ?></h1>
  <p class="lead">Arahkan kamera smartphone Anda ke QR code berikut, atau buka tautan di bawah untuk mengisi formulir.</p>
 
- <img class="qr" src="<?= $e($qrFile) ?>" alt="QR code <?= $e($title) ?>" width="280" height="280">
+ <div class="qrbox"><img src="<?= $e($qrUrl) ?>" alt="QR code <?= $e($title) ?>" width="292" height="292"></div>
 
- <p class="label">Form URL</p>
- <div class="urlrow">
-  <input id="url" type="text" value="<?= $e($targetUrl) ?>" readonly onfocus="this.select()">
-  <button class="btn" type="button" id="copy">Copy</button>
+ <div class="urlbox">
+  <div>
+   <p class="label">Form URL</p>
+   <input id="url" type="text" value="<?= $e($targetUrl) ?>" readonly onfocus="this.select()">
+  </div>
+  <button class="btn copy" type="button" id="copy">Copy</button>
  </div>
 
  <div class="actions">
-  <a class="btn" href="<?= $e($qrFile) ?>" download="<?= $e($qrFile) ?>">Download QR (PNG)</a>
-  <a class="btn solid" href="<?= $e($targetUrl) ?>" target="_blank" rel="noopener">Open Link</a>
+  <a class="btn red" href="<?= $e($qrUrl) ?>" download="<?= $e($qrFile) ?>">Download QR (PNG)</a>
+  <a class="btn dark" href="<?= $e($targetUrl) ?>" target="_blank" rel="noopener">Open Link</a>
  </div>
 
  <p class="foot"><a href="/">mosqueranger.org</a></p>
