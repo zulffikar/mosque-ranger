@@ -5,7 +5,7 @@
  * Ubah $targetUrl untuk mengganti tujuan; jika berubah, buat ulang qr-rawat-bumi.png.
  */
 $title     = 'Rawat Bumi';
-$targetUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfUsN-eaYMl4nwYW4cejPYPVf5n1m_FCO6OB-wwd56WYBpInQ/viewform?usp=dialog';
+$targetUrl = 'https://mosqueranger.org/relawan';
 $qrFile    = 'qr-rawat-bumi.png';
 $qrUrl     = '/link/rawat-bumi/' . $qrFile; // path absolut agar tetap tampil tanpa garis miring di akhir URL
 $e = fn($s) => htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
